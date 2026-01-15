@@ -1,40 +1,36 @@
-# Emotion Detection using Deep Learning
+# Emotion Detection App — Docker Quickstart
+
+## Prerequisites
+- Docker Desktop installed: https://www.docker.com/products/docker-desktop/
 
 ## Quick Start
 
-### 1. Clone the Repository
+### 1. Build the image
 ```bash
-git clone https://github.com/atulapra/Emotion-detection.git
-cd Emotion-detection
+docker build -t emotion-detection-app .
 ```
 
-### 2. Create Virtual Environment
+### 2. Run the container
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+docker run -p 5000:5000 emotion-detection-app
 ```
 
-### 3. Install Dependencies
-```bash
-pip install -r requirements.txt
+### 3. Open your browser
+```
+http://localhost:5000
 ```
 
-### 4. Download Pre-trained Model
-Download `model.h5` from [here](https://drive.google.com/file/d/1FUn0XNOzf-nQV7QjbBPA6-8GLoHNNgv-/view?usp=sharing) and place it in the `src/` folder.
+## Files Needed
+- `Dockerfile`
+- `requirements.txt`
+- `.dockerignore`
+- `app.py`
+- `src/` folder with model files
+- `static/` folder with HTML
 
-### 5. Start the Project
+## Commands Reference
 ```bash
-cd src
-python emotions.py --mode display
+docker build -t emotion-detection-app .                    # Build image
+docker run -p 5000:5000 emotion-detection-app             # Run container
+docker build --no-cache -t emotion-detection-app .        # Force rebuild
 ```
-
-This will open your webcam and start real-time emotion detection.
-
-## Project Overview
-- Detects 7 emotions: angry, disgusted, fearful, happy, neutral, sad, surprised
-- Uses CNN trained on FER-2013 dataset
-- Real-time webcam-based emotion detection
-- 63.2% test accuracy
-
-## License
-MIT License
